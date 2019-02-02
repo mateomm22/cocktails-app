@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './containers/home';
 import Categories from './containers/categories';
-import Results from './containers/results';
 import Detail from './containers/detail';
+import Home from './containers/home';
+import Results from './containers/results';
 
 import './App.css';
 
