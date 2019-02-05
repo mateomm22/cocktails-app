@@ -6,8 +6,6 @@ import Detail from './containers/detail';
 import Home from './containers/home';
 import Results from './containers/results';
 
-import './App.css';
-
 class App extends Component {
   render() {
     return (
