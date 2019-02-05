@@ -1,0 +1,16 @@
+//fonts mixins
+play($weight)
+  font-family 'Playfair Display', serif
+  font-weight $weight
+
+
+source($weight)
+  font-family 'Source Sans Pro', sans-serif
+  font-weight $weight
+
+//Grid mixin
+makeGrid($cols, x=25px, y=25px)
+  grid-template-columns repeat($cols, 1fr)
+  grid-template-rows auto
+  grid-gap x y
+  

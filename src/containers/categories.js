@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+import Layout from '../misc/layout';
+
 class Categories extends Component {
   render (){
     return(
-      <div>
+      <Layout className="categories">
         <h1>Categories</h1>
-      </div>
+      </Layout>
     );
   };
 }
