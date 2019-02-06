@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Layout from '../misc/layout';
 
 class Categories extends Component {
-  render (){
+  render() {
     return(
       <Layout className="categories">
         <h1>Categories</h1>
