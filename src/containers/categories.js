@@ -13,4 +13,14 @@ class Categories extends Component {
   };
 }
 
-export default Categories;
+//Map REDUX state to LOCAL props
+const mapStateToProps  = state => {
+  return {
+    categories: [
+      {Types: state.drinkTypes},
+      {Alcohol: state.alcohol}
+    ]
+  }
+}
+
+export default connect(mapStateToProps)(Categories);
