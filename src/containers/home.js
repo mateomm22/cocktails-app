@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom'
 import Layout from '../misc/layout';
 
 class Home extends Component {
+  
+  state = {
+    needle: ''
+  }
+
+  setNeedle = (e) => {
+    this.setState({needle: e.target.value})
+  }
+
   render() {
     return(
       <Layout className="home">
@@ -11,8 +20,10 @@ class Home extends Component {
         <p>Lorem ipsum dolor sit amet.</p>
         <div className="searcher">
           <input 
-            placeholder="Search by name or ingredient" />
-          <button className="btn-send">
+            placeholder="Search by name or ingredient" 
+            onChange={this.setNeedle} />
+          <button 
+            className="btn-send">
             Search
           </button>
         </div>
