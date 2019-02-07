@@ -1,4 +1,4 @@
-import { initialState } from "../data/drinkTypes";
+import { initialState } from '../data/drinkTypes';
 
 const drinkTypesReducer = (state = initialState, action) => state;
 
