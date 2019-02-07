@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 import drinkTypesReducer from './drinkTypes';
 import alcoholReducer from './alcohol';

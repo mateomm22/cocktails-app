@@ -10,7 +10,7 @@ import reducer from './store/reducers/reducer';
 
 import App from './App';
 
-import './assets/main.css';
+import './assets/main.styl';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(

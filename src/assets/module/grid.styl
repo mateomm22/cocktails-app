@@ -1,18 +1,18 @@
 .grid
   display grid
-  makeGrid(1, 15px, 15px)
+  make-grid(1, 15px, 15px)
 
-@media (min-width 450px)
-  .grid-4
-    makeGrid(2)
++media-query(450)
+  .grid-4  
+    grid-template-columns repeat(2, 1fr)
 
-@media (min-width 550px)
++media-query('small')
   .grid-3
-    makeGrid(3)
+    grid-template-columns repeat(3, 1fr)
 
-@media (min-width 768px)
++media-query('medium')
   .grid-2
-    makeGrid(2)
+    grid-template-columns repeat(2, 1fr)
   .grid-4
-    makeGrid(4)
+    grid-template-columns repeat(4, 1fr)
     
