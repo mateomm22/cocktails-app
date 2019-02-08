@@ -18,11 +18,36 @@ const setDrinks = (state, action) => {
     return drinkInfo;
   });
 
+<<<<<<< HEAD
   return {
     ...state,
     loading: false,
     drinks: results,
   };
+=======
+const fetchDrinks = (state, action) => {
+  
+  let results = [];
+  action.drinks.map(drink => {
+    let id = drink.idDrink;
+    let name = drink.strDrink;
+    let image = drink.strDrinkThumb;
+    let cat = drink.strCategory;
+    let alc = drink.strAlcoholic;
+    let drinkInfo = {
+      id: id,
+      name: name,
+      image: image,
+      alcohol: alc,
+      category: cat
+    };
+    return results.push(drinkInfo);
+  });
+  
+  return state = [
+    ...results
+  ]
+>>>>>>> Build the object inside the reducer
 };
 
 const fetchStart = state => ({

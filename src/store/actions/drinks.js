@@ -1,6 +1,7 @@
 import * as actions from './actionTypes';
 import axios from '../../services/order-service';
 
+<<<<<<< HEAD
 const setDrinks = (actionVal, payload) => ({
   type: actionVal,
   drinks: payload,
@@ -40,6 +41,12 @@ export const setFetchedDrinks = (drinksByName) => {
   return {
     type: actions.SEARCH_BY_NAME,
     payload: results,
+=======
+const setFetchedDrinks = drinksByName => {
+  return {
+    type: actions.SEARCH_BY_NAME,
+    drinks: drinksByName
+>>>>>>> Build the object inside the reducer
   };
 };
 
