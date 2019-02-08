@@ -26,3 +26,36 @@ export const filterDrinks = (category, value) => (dispatch) => {
       dispatch(setDrinks(actions.FILTER_DRINKS, response.data.drinks));
     });
 };
+
+export const setFetchedDrinks = (drinksByName) => {
+  const results = [];
+  drinksByName.map((drink) => {
+    const drinkInfo = {};
+    const drinkId = drink.idDrink;
+    const drinkName = drink.strDrink;
+    drinkInfo.id = drinkId;
+    drinkInfo.name = drinkName;
+    return results.push(drinkInfo);
+  });
+  return {
+    type: actions.SEARCH_BY_NAME,
+    payload: results,
+  };
+};
+
+export const fetchDrinksByName = keyword => (
+  (dispatch) => {
+    axios
+      .get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
+        params: {
+          s: keyword,
+        },
+      })
+      .then((response) => {
+        dispatch(setFetchedDrinks(response.data.drinks));
+      })
+      .catch((error) => {
+        dispatch(console.log(error));
+      });
+  }
+);

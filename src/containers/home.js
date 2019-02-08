@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+
+import * as actions from '../store/actions/drinks';
 
 import Layout from '../misc/layout';
 
@@ -13,6 +16,11 @@ class Home extends Component {
     this.setState({needle: e.target.value})
   }
 
+  sendForm = (keyword) => {
+    this.props.searchHome(keyword);
+    this.props.history.push("/results");
+  }
+
   render() {
     return(
       <Layout className="home">
@@ -23,7 +31,8 @@ class Home extends Component {
             placeholder="Search by name or ingredient" 
             onChange={this.setNeedle} />
           <button 
-            className="btn-send">
+            className="btn-send"
+            onClick={() => this.sendForm(this.state.needle)}>
             Search
           </button>
         </div>
@@ -33,4 +42,18 @@ class Home extends Component {
   };
 }
 
-export default Home;
+// const mapStateToProps = state => {
+//   return {
+//     ings: state.burgerBuilder.ingredients,
+//     price: state.burgerBuilder.totalPrice,
+//     error: state.burgerBuilder.error
+//   };
+// };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    searchHome: needle => dispatch(actions.fetchDrinksByName(needle)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Home);

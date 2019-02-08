@@ -46,6 +46,9 @@ const drinksReducer = (state = initialState, action) => {
     case actions.CLEAR_STATE:
       return clearDrinks(state, action);
 
+    case actions.SEARCH_BY_NAME:
+      return setDrinks(state, action);
+
     default:
       return state;
   }
