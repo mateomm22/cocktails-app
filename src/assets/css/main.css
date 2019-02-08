@@ -117,3 +117,79 @@ header {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
 }
+.results .container {
+  margin: 50px auto;
+}
+.title {
+  display: block;
+  font-size: 2em;
+  color: #30364d;
+  margin-bottom: 15px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+.grid {
+  grid-row-gap: 50px;
+}
+.cocktail-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.cocktail-item:after,
+.cocktail-item .text:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #30364d;
+  opacity: 0.8;
+  transition: all 0.2s ease-out;
+}
+.cocktail-item img {
+  display: block;
+  position: relative;
+  width: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  transition: all 0.2s ease-out;
+}
+.cocktail-item .text {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 15px 10px;
+}
+.cocktail-item .text:before {
+  opacity: 0;
+  z-index: 0;
+}
+.cocktail-item .text h2,
+.cocktail-item .text span {
+  position: relative;
+  z-index: 1;
+  color: #cfc4b2;
+}
+.cocktail-item .text h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 0;
+}
+.cocktail-item .text span {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+.cocktail-item:hover img {
+  filter: blur(0);
+}
+.cocktail-item:hover:after {
+  opacity: 0;
+}
+.cocktail-item:hover .text:before {
+  opacity: 1;
+}
