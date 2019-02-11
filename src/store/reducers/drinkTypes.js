@@ -18,7 +18,7 @@ const setTypes = (state, action) => {
   ]
 };
 
-const drinkTypesReducer = (state = initialState, action) => {
+const drinkTypesReducer = (state = [], action) => {
   switch (action.type) {
     case actions.GET_DRINK_TYPES:
       return setTypes(state, action);
