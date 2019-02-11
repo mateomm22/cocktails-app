@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
 
 import Layout from '../misc/layout';
-import CatItem from "../components/category/catItem";
+import CatGroup from "../components/category/catGroup";
 
 class Categories extends Component {
 
@@ -18,38 +18,24 @@ class Categories extends Component {
     //Watch this on the Devtools: 
     // console.log(this.props.alcohol);
 
-    let allTypes = this.props.types.map(type => {
+    let allCat = this.props.categories.map((category, idCat) => {
+      let group, item;
+      group = Object.keys(category);
+      Object.values(category).map(itemCat => {
+        return item = itemCat;
+      });
       return (
-        <CatItem 
-          key={type.id}
-          name={type.name} />
-      )
-    });
-
-    let allAlc = this.props.alcohol.map(type => {
-      if(!type.name) return;
-      return (
-        <CatItem 
-          key={type.id}
-          name={type.name} />
-      )
+        <CatGroup 
+          key={idCat}
+          catName={group}
+          items={item} />
+      );
     });
 
     return(
       <Layout className="categories">
         <h1>Categories</h1>
-        <div className="cat-group">
-          <h4>Drink types</h4>
-          <div className="grid grid-4">
-            {allTypes}
-          </div>
-        </div>
-        <div className="cat-group">
-          <h4>Alcohol level</h4>
-          <div className="grid grid-4">
-            {allAlc}
-          </div>
-        </div>
+        {allCat}
       </Layout>
     );
   };
@@ -58,8 +44,10 @@ class Categories extends Component {
 //Map REDUX state to LOCAL props
 const mapStateToProps  = state => {
   return {
-    types: state.drinkTypes,
-    alcohol: state.alcohol
+    categories: [
+      {'Drink types': state.drinkTypes},
+      {'Alcohol level': state.alcohol}
+    ]
   }
 }
 

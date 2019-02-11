@@ -4,6 +4,7 @@ import CatItem from './catItem';
 
 const catGroup = (props) => {
   let items = props.items.map(item => {
+    if(!item.name) return false;
     return (
       <CatItem 
         key={item.id}
