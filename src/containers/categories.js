@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import * as actions from '../store/actions/index';
+
 import Layout from '../misc/layout';
-import CatGroup from '../components/category/catGroup';
 
 class Categories extends Component {
+
+  
+  componentDidMount() {
+    this.props.getTypes();
+  }
+  
   render() {
-    let catGroups = this.props.categories.map((category, idCat) => {
-      let group, items;
-      group = Object.keys(category);
-      Object.values(category).map(itemCat => items = itemCat);
-      return (
-        <CatGroup 
-          key={idCat}
-          catName={group}
-          items={items} />
-      );
-    });
+    //Watch this on the Devtools: 
+    console.log(this.props.types);
 
     return(
       <Layout className="categories">
         <h1>Categories</h1>
-        {catGroups}
       </Layout>
     );
   };
@@ -30,11 +27,14 @@ class Categories extends Component {
 //Map REDUX state to LOCAL props
 const mapStateToProps  = state => {
   return {
-    categories: [
-      {Types: state.drinkTypes},
-      {Alcohol: state.alcohol}
-    ]
+    types: state.drinkTypes
   }
 }
 
-export default connect(mapStateToProps)(Categories);
+const mapDispatchToProps = dispatch => {
+  return {
+    getTypes: () => dispatch(actions.fetchDrinkTypes())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);
