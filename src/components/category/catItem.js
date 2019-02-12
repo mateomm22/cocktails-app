@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const catItem = (props) => {
   return (
     <div 

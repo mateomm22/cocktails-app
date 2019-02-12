@@ -8,7 +8,8 @@ const catGroup = (props) => {
     return (
       <CatItem 
         key={item.id}
-        name={item.name} />
+        name={item.name}
+        clicked={() => props.itemClicked(props.idCat,item.name)} />
     )
   });
   return (

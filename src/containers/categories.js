@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
 
 import Layout from '../misc/layout';
-import CatGroup from "../components/category/catGroup";
+import CatGroup from '../components/category/catGroup';
 
 class Categories extends Component {
 
-  
   componentDidMount() {
     this.props.getTypes();
     this.props.getAlc();
   }
-  
+
+  filterDrinks(idCat,catName) {
+    console.log(idCat);
+    console.log(catName);
+  }
+
   render() {
     //Watch this on the Devtools: 
     // console.log(this.props.alcohol);
@@ -27,8 +31,10 @@ class Categories extends Component {
       return (
         <CatGroup 
           key={idCat}
+          idCat={idCat}
           catName={group}
-          items={item} />
+          items={item}
+          itemClicked={this.filterDrinks} />
       );
     });
 
