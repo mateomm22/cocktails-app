@@ -1,0 +1,29 @@
+//fonts mixins
+setFont($family, $weight)
+  if $family == 'playfair'
+    font-family 'Playfair Display', serif
+  if $family == 'source'
+    font-family 'Source Sans Pro', sans-serif
+  font-weight $weight
+
+//Grid mixin
+makeGrid($cols, x=25px, y=25px)
+  grid-template-columns repeat($cols, 1fr)
+  grid-template-rows auto
+  grid-gap x y
+  
+//media quieries mixin  
+mediaQuery($size)
+  if $size == 'small' 
+    @media (min-width 550px)
+      {block}
+  else if $size == 'medium' 
+    @media (min-width 768px)
+      {block}
+  else if $size == 'large' 
+    @media (min-width 1024px)
+      {block}
+  else 
+    //this is just for very specific fixes that doesn't match inside any of the above sizes
+    @media (min-width unit($size, px))
+      {block}
