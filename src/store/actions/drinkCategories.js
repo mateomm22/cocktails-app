@@ -1,5 +1,5 @@
 import * as actions from './actionTypes';
-import axios from '../../axios-orders';
+import axios from '../../services/order-service';
 
 const setFetchedTypes = (actionVal, payload) => {
   return {
