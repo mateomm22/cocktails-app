@@ -57,8 +57,11 @@ module.exports = {
   stats: {
     errorDetails: true
   },
-  //settings to Router
+  //Server settings
   devServer: {
+    //Change default port
+    port: 3000,
+    //Settings to Router
     historyApiFallback: true,
   },
   plugins: [htmlWebpackPlugin]
