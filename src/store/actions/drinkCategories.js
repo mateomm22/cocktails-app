@@ -14,9 +14,6 @@ export const fetchDrinkTypes = () => {
       .get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
       .then(response => {
         dispatch(setFetchedTypes(actions.GET_DRINK_TYPES, response.data.drinks));
-      })
-      .catch(error => {
-        dispatch(console.log(error));
       });
   };
 };
@@ -27,9 +24,6 @@ export const fetchAlcLevel = () => {
       .get('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list')
       .then(response => {
         dispatch(setFetchedTypes(actions.GET_ALC_LEVEL, response.data.drinks));
-      })
-      .catch(error => {
-        dispatch(console.log(error));
       });
   };
 };

@@ -19,7 +19,7 @@ class Home extends Component {
         <Link to="/categories" className="link">List categories</Link>
       </Layout>
     );
-  };
+  }
 }
 
 export default Home;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import * as actions from '../store/actions/index';
 
@@ -13,9 +14,8 @@ class Categories extends Component {
     this.props.getAlc();
   }
 
-  filterDrinks(idCat,catName) {
-    console.log(idCat);
-    console.log(catName);
+  filterDrinks(){
+    
   }
 
   render() {
@@ -44,7 +44,7 @@ class Categories extends Component {
         {allCat}
       </Layout>
     );
-  };
+  }
 }
 
 //Map REDUX state to LOCAL props
@@ -63,5 +63,12 @@ const mapDispatchToProps = dispatch => {
     getAlc: () => dispatch(actions.fetchAlcLevel()),
   };
 };
+
+//Set propTypes
+Categories.propTypes = {
+  getTypes: PropTypes.func,
+  getAlc: PropTypes.func,
+  categories: PropTypes.array
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

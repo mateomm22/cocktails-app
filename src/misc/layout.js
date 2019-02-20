@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Layout = (props) => {
+const layout = (props) => {
   let header = props.className !== 'home' ? <header>Logo</header> : null;
 
   return(
@@ -16,4 +17,10 @@ const Layout = (props) => {
   )
 }
 
-export default Layout;
+//Set propTypes
+layout.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+
+export default layout;

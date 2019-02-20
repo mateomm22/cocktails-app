@@ -7,7 +7,7 @@ class Detail extends Component {
         <h1>Detail</h1>
       </div>
     );
-  };
+  }
 }
 
 export default Detail;

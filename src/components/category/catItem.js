@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const catItem = (props) => {
   return (
@@ -9,4 +10,10 @@ const catItem = (props) => {
     </div>
   );
 }
+
+catItem.propTypes = {
+  clicked: PropTypes.func,
+  name: PropTypes.string
+}
+
 export default catItem;

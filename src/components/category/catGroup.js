@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import CatItem from './catItem';
 
 
@@ -21,4 +23,12 @@ const catGroup = (props) => {
     </div>
   );
 }
+
+catGroup.propTypes = {
+  items: PropTypes.array,
+  idCat: PropTypes.number,
+  catName: PropTypes.string,
+  itemClicked: PropTypes.func
+}
+
 export default catGroup;
