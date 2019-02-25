@@ -8,8 +8,7 @@ import Layout from '../misc/layout';
 import ResultItem from '../components/results/resultItem';
 
 class Results extends Component {
-  
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.props.clearState();
   }
   
@@ -21,9 +20,7 @@ class Results extends Component {
           key={key}
           drinkId={drink.id} 
           name={drink.name}
-          image={drink.image}
-          alcohol={drink.alcohol}
-          category={drink.category} />
+          image={drink.image}/>
       );
     });
 
@@ -31,7 +28,7 @@ class Results extends Component {
       <Layout className="results">
         <span className="title">Results</span>
         <div className="grid grid-4">
-          {drinks}
+        {drinks}
         </div>
       </Layout>
     );
@@ -48,15 +45,18 @@ const mapStateToProps  = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearState: () => dispatch(actions.clearState()),
+    getResults: (cat, name) => dispatch(actions.filterDrinks(cat, name)),
+    clearState: () => dispatch(actions.clearState())
   }
 }
 
 //Set propTypes
 Results.propTypes = {
-  results: PropTypes.array,
+  match: PropTypes.any,
   history: PropTypes.any,
   clearState: PropTypes.func,
+  getResults: PropTypes.func,
+  results: PropTypes.array,
   loading: PropTypes.bool
 }
 

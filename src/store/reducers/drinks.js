@@ -20,7 +20,6 @@ const setDrinks = (state, action) => {
     return results.push(drinkInfo);
   });
 
-  // return state;
   return {
     ...state,
     loading: false,

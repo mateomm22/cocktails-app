@@ -1,17 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+import slugify from 'slugify';
+
 import CatItem from './catItem';
 
 
 const catGroup = (props) => {
   let items = props.items.map(item => {
     if(!item.name) return false;
+
+    let buildSlug  = (string) => {
+      return  slugify(string, {
+        replacement: '_',
+        lower: true
+      });
+    }
+
+    let fixedCatName = buildSlug(props.catName);
+    let fixedName = buildSlug(item.name);
+    
     return (
-      <CatItem 
+      <Link
         key={item.id}
-        name={item.name}
-        clicked={() => props.itemClicked(props.idCat, item.name)} />
+        to={`/results/${fixedCatName}/${fixedName}`} >
+        <CatItem 
+          name={item.name} />
+      </Link>
     )
   });
   return (

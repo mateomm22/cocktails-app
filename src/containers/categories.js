@@ -8,24 +8,10 @@ import Layout from '../misc/layout';
 import CatGroup from '../components/category/catGroup';
 
 class Categories extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.filterDrinks = this.filterDrinks.bind(this);
-  }
 
   componentDidMount() {
     this.props.getTypes();
     this.props.getAlc();
-  }
-
-  filterDrinks(cat, val) {
-    let catKeys = {
-      0: 'c',
-      1: 'a'
-    }
-    this.props.onFilterDrinks(catKeys[cat], val);
-    this.props.history.push("/results");
   }
 
   render() {
@@ -40,8 +26,7 @@ class Categories extends Component {
           key={idCat}
           idCat={idCat}
           catName={group}
-          items={item}
-          itemClicked={this.filterDrinks} />
+          items={item} />
       );
     });
 
@@ -67,8 +52,7 @@ const mapStateToProps  = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getTypes: () => dispatch(actions.fetchDrinkTypes()),
-    getAlc: () => dispatch(actions.fetchAlcLevel()),
-    onFilterDrinks: (cat, val) => dispatch(actions.filterDrinks(cat, val))
+    getAlc: () => dispatch(actions.fetchAlcLevel())
   };
 };
 
@@ -77,7 +61,6 @@ Categories.propTypes = {
   getTypes: PropTypes.func,
   getAlc: PropTypes.func,
   categories: PropTypes.array,
-  onFilterDrinks: PropTypes.func,
   history: PropTypes.any
 }
 
