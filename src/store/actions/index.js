@@ -1,4 +1,10 @@
 export { 
   fetchDrinkTypes,
   fetchAlcLevel
-} from "./drinkCategories";
+} from './drinkCategories';
+
+export {
+  filterDrinks,
+  startFetching,
+  clearState
+} from './drinks';

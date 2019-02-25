@@ -12,7 +12,7 @@ const setLevels = (state, action) => {
     };
     return results.push(typeInfo);
   });
-  return state = [
+  return [
     ...results
   ]
 };
