@@ -1,13 +1,63 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import * as actions from '../store/actions/index'
+
+import Layout from '../misc/layout';
+import ResultItem from '../components/results/resultItem';
 
 class Results extends Component {
-  render (){
+  
+  componentWillUnmount(){
+    this.props.clearState();
+  }
+  
+  render() {
+    
+    let drinks = this.props.results.map((drink, key) => {
+      return (
+        <ResultItem
+          key={key}
+          drinkId={drink.id} 
+          name={drink.name}
+          image={drink.image}
+          alcohol={drink.alcohol}
+          category={drink.category} />
+      );
+    });
+
     return(
-      <div>
-        <h1>Results</h1>
-      </div>
+      <Layout className="results">
+        <span className="title">Results</span>
+        <div className="grid grid-4">
+          {drinks}
+        </div>
+      </Layout>
     );
   }
 }
 
-export default Results;
+//Map REDUX state to LOCAL props
+const mapStateToProps  = state => {
+  return {
+    results: state.drinksReducer.drinks,
+    loading: state.drinksReducer.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    clearState: () => dispatch(actions.clearState()),
+  }
+}
+
+//Set propTypes
+Results.propTypes = {
+  results: PropTypes.array,
+  history: PropTypes.any,
+  clearState: PropTypes.func,
+  loading: PropTypes.bool
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

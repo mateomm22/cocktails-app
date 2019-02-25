@@ -12,8 +12,7 @@ const setTypes = (state, action) => {
     };
     return results.push(typeInfo);
   });
-  
-  return state = [
+  return [
     ...results
   ]
 };
