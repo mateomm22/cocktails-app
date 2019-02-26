@@ -2,15 +2,14 @@ import * as actions from '../actions/actionTypes';
 
 const setLevels = (state, action) => {
   
-  let results = [];
-  action.drinks.map((type, key) => {
+  const results = action.drinks.map((type, key) => {
     let id = key;
     let name = type.strAlcoholic;
     let typeInfo = {
       id: id,
       name: name
     };
-    return results.push(typeInfo);
+    return typeInfo;
   });
   return [
     ...results

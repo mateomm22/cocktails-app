@@ -7,8 +7,7 @@ const initialState = {
 
 const setDrinks = (state, action) => {
   
-  let results = [];
-  action.drinks.map(drink => {
+  const results = action.drinks.map(drink => {
     let id = drink.idDrink;
     let name = drink.strDrink;
     let image = drink.strDrinkThumb;
@@ -17,10 +16,9 @@ const setDrinks = (state, action) => {
       name: name,
       image: image
     };
-    return results.push(drinkInfo);
+    return drinkInfo;
   });
 
-  // return state;
   return {
     ...state,
     loading: false,
