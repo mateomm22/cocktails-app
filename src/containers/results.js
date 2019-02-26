@@ -14,18 +14,16 @@ class Results extends Component {
   }
   
   render() {
-    
-    let drinks = this.props.results.map((drink, key) => {
-      return (
-        <ResultItem
-          key={key}
-          drinkId={drink.id} 
-          name={drink.name}
-          image={drink.image}
-          alcohol={drink.alcohol}
-          category={drink.category} />
-      );
-    });
+
+    const drinks = this.props.results.map((drink, key) => 
+      <ResultItem
+        key={key}
+        drinkId={drink.id} 
+        name={drink.name}
+        image={drink.image}
+        alcohol={drink.alcohol}
+        category={drink.category} />
+    );
 
     return(
       <Layout className="results">
