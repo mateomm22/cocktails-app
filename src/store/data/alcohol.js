@@ -1,14 +1,16 @@
-export const initialState = [
+const initialState = [
   {
-    "id": "1",
-    "name": "Alcoholic"
+    id: '1',
+    name: 'Alcoholic',
   },
   {
-    "id": "2",
-    "name": "Non alcoholic"
+    id: '2',
+    name: 'Non alcoholic',
   },
   {
-    "id": "3",
-    "name": "Optional alcohol"
-  }
+    id: '3',
+    name: 'Optional alcohol',
+  },
 ];
+
+export default initialState;

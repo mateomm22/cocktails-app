@@ -5,14 +5,15 @@ import CatItem from './catItem';
 
 
 const catGroup = (props) => {
-  let items = props.items.map(item => {
-    if(!item.name) return false;
+  const items = props.items.map((item) => {
+    if (!item.name) return false;
     return (
-      <CatItem 
+      <CatItem
         key={item.id}
         name={item.name}
-        clicked={() => props.itemClicked(props.idCat, item.name)} />
-    )
+        clicked={() => props.itemClicked(props.idCat, item.name)}
+      />
+    );
   });
   return (
     <div className="cat-group">
@@ -22,13 +23,13 @@ const catGroup = (props) => {
       </div>
     </div>
   );
-}
+};
 
 catGroup.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.object),
   idCat: PropTypes.number,
   catName: PropTypes.string,
-  itemClicked: PropTypes.func
-}
+  itemClicked: PropTypes.func,
+};
 
 export default catGroup;

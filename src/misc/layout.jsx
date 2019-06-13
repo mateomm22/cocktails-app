@@ -2,25 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Layout = (props) => {
-  let header = props.className !== 'home' ? <header>Logo</header> : null;
+  const header = props.className !== 'home' ? <header>Logo</header> : null;
 
-  return(
+  return (
     <div className={props.className}>
       {header}
-      <div className='container'>
+      <div className="container">
         {props.children}
       </div>
       <footer>
         2019
       </footer>
     </div>
-  )
-}
+  );
+};
 
-//Set propTypes
+// Set propTypes
 Layout.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+};
 
 export default Layout;
