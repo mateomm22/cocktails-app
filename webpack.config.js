@@ -1,68 +1,75 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
+  template: './src/index.html',
+  filename: './index.html',
 });
 
 module.exports = {
   output: {
     path: path.resolve('dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
+              localIdentName: '[name]_[local]_[hash:base64]',
               sourceMap: true,
-              minimize: true
-            }
-          }
-        ]
+              minimize: true,
+            },
+          },
+        ],
       },
       {
         test: /\.styl$/,
         use: [
           {
-            loader: "style-loader"
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader"
+            loader: 'css-loader',
           },
           {
-            loader: "stylus-loader"
-          }
-        ]
-      }
-    ]
-  }, 
-  stats: {
-    errorDetails: true
+            loader: 'stylus-loader',
+          },
+        ],
+      },
+    ],
   },
-  //Server settings
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+  stats: {
+    errorDetails: true,
+  },
+  // Server settings
   devServer: {
-    //Change default port
+    // Change default port
     port: 3000,
-    //Settings to Router
+    // Settings to Router
     historyApiFallback: true,
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [htmlWebpackPlugin],
+  node: {
+    fs: 'empty',
+  },
 };

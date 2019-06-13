@@ -1,36 +1,28 @@
 import * as actions from './actionTypes';
 import axios from '../../services/order-service';
 
-const setDrinks = (actionVal, payload) => {
-  return {
-    type: actionVal,
-    drinks: payload
-  };
-};
+const setDrinks = (actionVal, payload) => ({
+  type: actionVal,
+  drinks: payload,
+});
 
-export const startFetching = () => {
-  return {
-    type: actions.START_FETCH
-  };
-};
+export const startFetching = () => ({
+  type: actions.START_FETCH,
+});
 
-export const clearState = () => {
-  return {
-    type: actions.CLEAR_STATE
-  };
-};
+export const clearState = () => ({
+  type: actions.CLEAR_STATE,
+});
 
-export const filterDrinks = (category, value) => {
-  return dispatch => {
-    axios
-      .get('/filter.php', {
-        params: {
-          [category]: value
-        }
-      })
-      .then(response => {
-        dispatch(startFetching());
-        dispatch(setDrinks(actions.FILTER_DRINKS, response.data.drinks));
+export const filterDrinks = (category, value) => (dispatch) => {
+  axios
+    .get('/filter.php', {
+      params: {
+        [category]: value,
+      },
+    })
+    .then((response) => {
+      dispatch(startFetching());
+      dispatch(setDrinks(actions.FILTER_DRINKS, response.data.drinks));
     });
-  };
 };
