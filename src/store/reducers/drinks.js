@@ -18,36 +18,35 @@ const setDrinks = (state, action) => {
     return drinkInfo;
   });
 
-<<<<<<< HEAD
   return {
     ...state,
     loading: false,
     drinks: results,
   };
-=======
+};
+
 const fetchDrinks = (state, action) => {
-  
-  let results = [];
-  action.drinks.map(drink => {
-    let id = drink.idDrink;
-    let name = drink.strDrink;
-    let image = drink.strDrinkThumb;
-    let cat = drink.strCategory;
-    let alc = drink.strAlcoholic;
-    let drinkInfo = {
-      id: id,
-      name: name,
-      image: image,
+  const results = action.drinks.map((drink) => {
+    const id = drink.idDrink;
+    const name = drink.strDrink;
+    const image = drink.strDrinkThumb;
+    const cat = drink.strCategory;
+    const alc = drink.strAlcoholic;
+    const drinkInfo = {
+      id,
+      name,
+      image,
       alcohol: alc,
-      category: cat
+      category: cat,
     };
-    return results.push(drinkInfo);
+    return drinkInfo;
   });
-  
-  return state = [
-    ...results
-  ]
->>>>>>> Build the object inside the reducer
+
+  return {
+    ...state,
+    loading: false,
+    drinks: results,
+  };
 };
 
 const fetchStart = state => ({
@@ -72,7 +71,7 @@ const drinksReducer = (state = initialState, action) => {
       return clearDrinks(state, action);
 
     case actions.SEARCH_BY_NAME:
-      return setDrinks(state, action);
+      return fetchDrinks(state, action);
 
     default:
       return state;

@@ -1,7 +1,6 @@
 import * as actions from './actionTypes';
 import axios from '../../services/order-service';
 
-<<<<<<< HEAD
 const setDrinks = (actionVal, payload) => ({
   type: actionVal,
   drinks: payload,
@@ -28,41 +27,15 @@ export const filterDrinks = (category, value) => (dispatch) => {
     });
 };
 
-export const setFetchedDrinks = (drinksByName) => {
-  const results = [];
-  drinksByName.map((drink) => {
-    const drinkInfo = {};
-    const drinkId = drink.idDrink;
-    const drinkName = drink.strDrink;
-    drinkInfo.id = drinkId;
-    drinkInfo.name = drinkName;
-    return results.push(drinkInfo);
-  });
-  return {
-    type: actions.SEARCH_BY_NAME,
-    payload: results,
-=======
-const setFetchedDrinks = drinksByName => {
-  return {
-    type: actions.SEARCH_BY_NAME,
-    drinks: drinksByName
->>>>>>> Build the object inside the reducer
-  };
+export const fetchDrinksByName = keyword => (dispatch) => {
+  axios
+    .get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
+      params: {
+        s: keyword,
+      },
+    })
+    .then((response) => {
+      dispatch(startFetching());
+      dispatch(setDrinks(actions.SEARCH_BY_NAME, response.data.drinks));
+    });
 };
-
-export const fetchDrinksByName = keyword => (
-  (dispatch) => {
-    axios
-      .get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
-        params: {
-          s: keyword,
-        },
-      })
-      .then((response) => {
-        dispatch(setFetchedDrinks(response.data.drinks));
-      })
-      .catch((error) => {
-        dispatch(console.log(error));
-      });
-  }
-);

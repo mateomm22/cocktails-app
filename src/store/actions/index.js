@@ -5,6 +5,7 @@ export {
 
 export {
   filterDrinks,
+  fetchDrinksByName,
   startFetching,
   clearState,
 } from './drinks';
