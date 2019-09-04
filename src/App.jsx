@@ -9,7 +9,7 @@ import Results from './containers/results';
 const App = () => (
   <Switch>
     <Route path="/detail/:id" exact component={Detail} />
-    <Route path="/results" component={Results} />
+    <Route path="/results/:category/:name" component={Results} />
     <Route path="/categories" component={Categories} />
     <Route path="/" exact component={Home} />
   </Switch>
