@@ -12,14 +12,12 @@ const catGroup = (props) => {
     if (!item.name) return false;
 
     const buildSlug = string => slugify(string, {
-      replacement: '_',
+      replacement: '-',
       lower: true,
     });
 
     const fixedCatName = buildSlug(props.catName);
     const fixedName = buildSlug(item.name);
-
-    console.log(fixedName);
 
     return (
       <Link

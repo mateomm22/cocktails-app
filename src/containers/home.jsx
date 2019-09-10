@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import slugify from 'slugify';
+
 import * as actions from '../store/actions/drinks';
 
 import Layout from '../misc/layout';
@@ -22,7 +24,13 @@ class Home extends Component {
   sendForm() {
     const { dispatch, history } = this.props;
     dispatch(actions.fetchDrinksByName(this.state.needle));
-    history.push('/results');
+
+    const newNeddle = slugify(this.state.needle, {
+      replacement: '-',
+      lower: true,
+    });
+
+    history.push(`/results/search/${newNeddle}`);
   }
 
   render() {
@@ -40,7 +48,7 @@ class Home extends Component {
             />
             <button
               className="btn-send"
-              type="submit"
+              type="button"
             >
               Search
             </button>
