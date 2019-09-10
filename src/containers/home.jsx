@@ -23,10 +23,11 @@ class Home extends Component {
 
   sendForm() {
     const { dispatch, history } = this.props;
-    dispatch(actions.fetchDrinksByName(this.state.needle));
+    // dispatch(actions.fetchDrinksByName('s', this.state.needle));
+    dispatch(actions.filterDrinks('i', this.state.needle));
 
     const newNeddle = slugify(this.state.needle, {
-      replacement: '-',
+      replacement: '_',
       lower: true,
     });
 

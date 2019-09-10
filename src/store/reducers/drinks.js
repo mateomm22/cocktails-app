@@ -7,6 +7,7 @@ const initialState = {
 
 const setDrinks = (state, action) => {
   const results = action.drinks.map((drink) => {
+    // console.log(drink);
     const id = drink.idDrink;
     const name = drink.strDrink;
     const image = drink.strDrinkThumb;
@@ -21,31 +22,10 @@ const setDrinks = (state, action) => {
   return {
     ...state,
     loading: false,
-    drinks: results,
-  };
-};
-
-const fetchDrinks = (state, action) => {
-  const results = action.drinks.map((drink) => {
-    const id = drink.idDrink;
-    const name = drink.strDrink;
-    const image = drink.strDrinkThumb;
-    const cat = drink.strCategory;
-    const alc = drink.strAlcoholic;
-    const drinkInfo = {
-      id,
-      name,
-      image,
-      alcohol: alc,
-      category: cat,
-    };
-    return drinkInfo;
-  });
-
-  return {
-    ...state,
-    loading: false,
-    drinks: results,
+    drinks: [
+      ...state.drinks,
+      ...results,
+    ],
   };
 };
 
@@ -64,14 +44,14 @@ const drinksReducer = (state = initialState, action) => {
     case actions.FILTER_DRINKS:
       return setDrinks(state, action);
 
+    case actions.SEARCH_BY_NAME:
+      return setDrinks(state, action);
+
     case actions.START_FETCH:
       return fetchStart(state, action);
 
     case actions.CLEAR_STATE:
       return clearDrinks(state, action);
-
-    case actions.SEARCH_BY_NAME:
-      return fetchDrinks(state, action);
 
     default:
       return state;

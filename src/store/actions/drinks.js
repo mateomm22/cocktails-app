@@ -16,7 +16,7 @@ export const clearState = () => ({
 
 export const filterDrinks = (category, value) => (dispatch) => {
   axios
-    .get('/filter.php', {
+    .get('filter.php', {
       params: {
         [category]: value,
       },
@@ -27,11 +27,11 @@ export const filterDrinks = (category, value) => (dispatch) => {
     });
 };
 
-export const fetchDrinksByName = keyword => (dispatch) => {
+export const fetchDrinksByName = (category, keyword) => (dispatch) => {
   axios
-    .get('https://www.thecocktaildb.com/api/json/v1/1/search.php', {
+    .get('search.php', {
       params: {
-        s: keyword,
+        [category]: keyword,
       },
     })
     .then((response) => {

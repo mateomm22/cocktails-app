@@ -8,7 +8,7 @@ const setFetchedTypes = (actionVal, payload) => ({
 
 export const fetchDrinkTypes = () => (dispatch) => {
   axios
-    .get('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
+    .get('list.php?c=list')
     .then((response) => {
       dispatch(setFetchedTypes(actions.GET_DRINK_TYPES, response.data.drinks));
     });
@@ -16,7 +16,7 @@ export const fetchDrinkTypes = () => (dispatch) => {
 
 export const fetchAlcLevel = () => (dispatch) => {
   axios
-    .get('https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list')
+    .get('list.php?a=list')
     .then((response) => {
       dispatch(setFetchedTypes(actions.GET_ALC_LEVEL, response.data.drinks));
     });

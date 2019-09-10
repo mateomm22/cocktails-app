@@ -12,7 +12,7 @@ const catGroup = (props) => {
     if (!item.name) return false;
 
     const buildSlug = string => slugify(string, {
-      replacement: '-',
+      replacement: '_',
       lower: true,
     });
 
