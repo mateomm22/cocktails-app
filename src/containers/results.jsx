@@ -27,6 +27,7 @@ class Results extends Component {
     switch (category) {
       case 'search':
         dispatch(actions.fetchDrinksByName('s', name));
+        dispatch(actions.filterDrinks('i', name));
         break;
       case 'alcohol_level':
         dispatch(actions.filterDrinks('a', name));

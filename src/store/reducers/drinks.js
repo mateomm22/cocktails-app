@@ -7,7 +7,6 @@ const initialState = {
 
 const setDrinks = (state, action) => {
   const results = action.drinks.map((drink) => {
-    // console.log(drink);
     const id = drink.idDrink;
     const name = drink.strDrink;
     const image = drink.strDrinkThumb;

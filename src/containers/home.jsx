@@ -23,15 +23,15 @@ class Home extends Component {
 
   sendForm() {
     const { dispatch, history } = this.props;
-    // dispatch(actions.fetchDrinksByName('s', this.state.needle));
+    dispatch(actions.fetchDrinksByName('s', this.state.needle));
     dispatch(actions.filterDrinks('i', this.state.needle));
 
-    const newNeddle = slugify(this.state.needle, {
+    const newNeedle = slugify(this.state.needle, {
       replacement: '_',
       lower: true,
     });
 
-    history.push(`/results/search/${newNeddle}`);
+    history.push(`/results/search/${newNeedle}`);
   }
 
   render() {
