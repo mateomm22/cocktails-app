@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import slugify from 'slugify';
+import buildSlug from '../misc/slugify';
 
 import * as actions from '../store/actions/drinks';
 
@@ -13,25 +13,22 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      needle: '',
+      keyword: '',
     };
   }
 
-  setNeedle(e) {
-    this.setState({ needle: e.target.value });
+  setKeyword(e) {
+    this.setState({ keyword: e.target.value });
   }
 
   sendForm() {
     const { dispatch, history } = this.props;
-    dispatch(actions.fetchDrinksByName('s', this.state.needle));
-    dispatch(actions.filterDrinks('i', this.state.needle));
+    dispatch(actions.fetchDrinksByName('s', this.state.keyword));
+    dispatch(actions.filterDrinks('i', this.state.keyword));
 
-    const newNeedle = slugify(this.state.needle, {
-      replacement: '_',
-      lower: true,
-    });
+    const formattedKeyword = buildSlug(this.state.keyword);
 
-    history.push(`/results/search/${newNeedle}`);
+    history.push(`/results/search/${formattedKeyword}`);
   }
 
   render() {
@@ -45,7 +42,7 @@ class Home extends Component {
           >
             <input
               placeholder="Search by name or ingredient"
-              onChange={e => this.setNeedle(e)}
+              onChange={e => this.setKeyword(e)}
             />
             <button
               className="btn-send"

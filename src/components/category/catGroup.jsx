@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
-import slugify from 'slugify';
+import buildSlug from '../../misc/slugify';
 
 import CatItem from './catItem';
 
@@ -10,11 +10,6 @@ import CatItem from './catItem';
 const catGroup = (props) => {
   const items = props.items.map((item) => {
     if (!item.name) return false;
-
-    const buildSlug = string => slugify(string, {
-      replacement: '_',
-      lower: true,
-    });
 
     const fixedCatName = buildSlug(props.catName);
     const fixedName = buildSlug(item.name);

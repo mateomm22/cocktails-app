@@ -1,7 +1,8 @@
 import axios from 'axios';
+import * as endpoint from '../constants/endpoints';
 
 const instance = axios.create({
-  baseURL: 'https://www.thecocktaildb.com/api/json/v1/1/',
+  baseURL: endpoint.BASE_URL,
 });
 
 export default instance;

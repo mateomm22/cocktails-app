@@ -3,55 +3,55 @@
     margin 50px auto
 
 .title
+  color $main
   display block
   font-size 2em
-  color $main
   margin-bottom 15px
   setFont('playfair', 700)
 
 .grid
   grid-row-gap 50px
 .cocktail-item
-  position relative
   cursor pointer
   overflow hidden
+  position relative
   &:after
+    background-color $main
     content ''
     display block
-    width 100%
     height 100%
+    left 0
+    opacity 0.8
     position absolute
     top 0
-    left 0
-    background-color $main
-    opacity 0.8
     transition all .2s ease-out
+    width 100%
   img
     display block
-    position relative
-    width 100%
-    object-fit cover
     filter blur(5px)
+    object-fit cover
+    position relative
     transition all .2s ease-out
+    width 100%
   .text
+    bottom 0
+    left 0
+    padding 15px 10px
     position absolute
     width 100%
-    left 0
-    bottom 0
-    padding 15px 10px
     &:before
       @extends .cocktail-item:after
       opacity 0
       z-index 0
     h2,
     span
+      color $secondary
       position relative
       z-index 1
-      color $secondary
     h2
-      setFont('source', 700)
       font-size 1.1em
       margin-bottom 0
+      setFont('source', 700)
     span
       font-size .8em
       font-weight 500

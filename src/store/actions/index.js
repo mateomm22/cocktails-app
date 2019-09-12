@@ -1,6 +1,5 @@
 export {
-  fetchDrinkTypes,
-  fetchAlcLevel,
+  fetchCategory
 } from './drinkCategories';
 
 export {

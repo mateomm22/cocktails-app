@@ -1,4 +1,4 @@
-import * as actions from './actionTypes';
+import * as endpoint from '../../constants/endpoints';
 import axios from '../../services/order-service';
 
 const setFetchedTypes = (actionVal, payload) => ({
@@ -6,18 +6,21 @@ const setFetchedTypes = (actionVal, payload) => ({
   drinks: payload,
 });
 
-export const fetchDrinkTypes = () => (dispatch) => {
+/**
+ * Get all the items inside a given category
+ * @param {string} param - kay of the param inside the API.
+ * @param {number} action -Name of the action for the reducer.
+ * @returns {function} Axios request to the API with 
+ * the set parameters.
+ */
+export const fetchCategory = (param, action) => (dispatch) => {
   axios
-    .get('list.php?c=list')
+    .get(endpoint.LIST, {
+      params: {
+        [param]: 'list',
+      },
+    })
     .then((response) => {
-      dispatch(setFetchedTypes(actions.GET_DRINK_TYPES, response.data.drinks));
-    });
-};
-
-export const fetchAlcLevel = () => (dispatch) => {
-  axios
-    .get('list.php?a=list')
-    .then((response) => {
-      dispatch(setFetchedTypes(actions.GET_ALC_LEVEL, response.data.drinks));
+      dispatch(setFetchedTypes(action, response.data.drinks));
     });
 };
