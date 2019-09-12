@@ -21,7 +21,10 @@ const setDrinks = (state, action) => {
   return {
     ...state,
     loading: false,
-    drinks: results,
+    drinks: [
+      ...state.drinks,
+      ...results,
+    ],
   };
 };
 
@@ -38,6 +41,9 @@ const clearDrinks = state => ({
 const drinksReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.FILTER_DRINKS:
+      return setDrinks(state, action);
+
+    case actions.SEARCH_BY_NAME:
       return setDrinks(state, action);
 
     case actions.START_FETCH:

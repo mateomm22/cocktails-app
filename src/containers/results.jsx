@@ -9,6 +9,36 @@ import Layout from '../misc/layout';
 import ResultItem from '../components/results/resultItem';
 
 class Results extends Component {
+  /**
+   * Get the params in the url and perform the petition
+   * to the API with that parameters
+   */
+  componentDidMount() {
+    const {
+      dispatch,
+      match: {
+        params: {
+          category,
+          name,
+        },
+      },
+    } = this.props;
+
+    switch (category) {
+      case 'search':
+        dispatch(actions.fetchDrinksByName('s', name));
+        dispatch(actions.filterDrinks('i', name));
+        break;
+      case 'alcohol_level':
+        dispatch(actions.filterDrinks('a', name));
+        break;
+      case 'drink_types':
+        dispatch(actions.filterDrinks('c', name));
+        break;
+      default:
+    }
+  }
+
   componentWillUnmount() {
     const { dispatch } = this.props;
     dispatch(actions.clearState());
@@ -48,6 +78,9 @@ Results.propTypes = {
   results: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.string),
   ),
+  match: PropTypes.shape({
+    params: PropTypes.objectOf(PropTypes.string),
+  }).isRequired,
   dispatch: PropTypes.func,
 };
 

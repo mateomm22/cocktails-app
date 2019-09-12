@@ -1,7 +1,20 @@
+.results
+  .container
+    margin 50px auto
+
+.title
+  color $main
+  display block
+  font-size 2em
+  margin-bottom 15px
+  setFont('playfair', 700)
+
+.grid
+  grid-row-gap 50px
 .cocktail-item
   cursor pointer
-  position relative
   overflow hidden
+  position relative
   &:after
     background-color $main
     content ''
@@ -49,17 +62,3 @@
       opacity 0
     .text:before
         opacity 1
-  &.mockup
-    .image
-      width 100%
-      &:before
-        display block
-        padding-bottom 100%
-        width 100%
-    .text
-      h2,
-      span
-        background-color rgba(black, .2)
-        border-radius 5px
-        display inline-block
-        height 5px

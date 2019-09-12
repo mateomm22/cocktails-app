@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import * as actionTypes from '../store/actions/actionTypes';
 import * as actions from '../store/actions/index';
 
 import Layout from '../misc/layout';
@@ -17,8 +18,8 @@ class Categories extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(actions.fetchDrinkTypes());
-    dispatch(actions.fetchAlcLevel());
+    dispatch(actions.fetchCategory('c', actionTypes.GET_DRINK_TYPES));
+    dispatch(actions.fetchCategory('a', actionTypes.GET_ALC_LEVEL));
   }
 
   filterDrinks(cat, val) {

@@ -1,5 +1,6 @@
 import * as actions from './actionTypes';
 import axios from '../../services/order-service';
+import * as endpoint from '../../constants/endpoints';
 
 const setDrinks = (actionVal, payload) => ({
   type: actionVal,
@@ -16,7 +17,7 @@ export const clearState = () => ({
 
 export const filterDrinks = (category, value) => (dispatch) => {
   axios
-    .get('/filter.php', {
+    .get(endpoint.FILTER, {
       params: {
         [category]: value,
       },
@@ -24,5 +25,18 @@ export const filterDrinks = (category, value) => (dispatch) => {
     .then((response) => {
       dispatch(startFetching());
       dispatch(setDrinks(actions.FILTER_DRINKS, response.data.drinks));
+    });
+};
+
+export const fetchDrinksByName = (category, keyword) => (dispatch) => {
+  axios
+    .get(endpoint.SEARCH, {
+      params: {
+        [category]: keyword,
+      },
+    })
+    .then((response) => {
+      dispatch(startFetching());
+      dispatch(setDrinks(actions.SEARCH_BY_NAME, response.data.drinks));
     });
 };
