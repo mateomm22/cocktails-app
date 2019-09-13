@@ -5,6 +5,7 @@ export {
 
 export {
   filterDrinks,
+  getDrinkDetails,
   startFetching,
   clearState,
 } from './drinks';

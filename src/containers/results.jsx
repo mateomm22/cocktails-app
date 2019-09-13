@@ -14,6 +14,12 @@ class Results extends Component {
     dispatch(actions.clearState());
   }
 
+  getDetails(id) {
+    const { dispatch } = this.props;
+    dispatch(actions.getDrinkDetails(id));
+    this.props.history.push(`/detail/${id}`);
+  }
+
   render() {
     const drinks = this.props.results.map((drink, key) => (
       <ResultItem
@@ -21,8 +27,7 @@ class Results extends Component {
         drinkId={drink.id}
         name={drink.name}
         image={drink.image}
-        alcohol={drink.alcohol}
-        category={drink.category}
+        clicked={() => this.getDetails(drink.id)}
       />
     ));
 

@@ -16,7 +16,7 @@ export const clearState = () => ({
 
 export const filterDrinks = (category, value) => (dispatch) => {
   axios
-    .get('/filter.php', {
+    .get('filter.php', {
       params: {
         [category]: value,
       },
@@ -26,3 +26,17 @@ export const filterDrinks = (category, value) => (dispatch) => {
       dispatch(setDrinks(actions.FILTER_DRINKS, response.data.drinks));
     });
 };
+
+export const getDrinkDetails = idDrink => (dispatch) => {
+  axios
+    .get('lookup.php', {
+      params: {
+        'i': idDrink,
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      dispatch(startFetching());
+      dispatch(setDrinks(actions.GET_DETAILS, response.data.drinks));
+    });
+}
